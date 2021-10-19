@@ -1,0 +1,24 @@
+version: 3
+automerge: false
+projects:
+- name: terraform-gitlab-runner
+  dir: . 
+  terraform_version: v0.12.26
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: true
+  workflow:  prd
+  workspace: terraform-gitlab-runner
+workflows:
+  prd:
+    plan:
+      steps:
+      - run: export TF_LOG=DEBUG
+      - init:
+          extra_args: ["-var-file", "./env/prd/vars.tfvars"]
+      - plan:
+          extra_args: ["-var-file", "./env/prd/vars.tfvars"]
+    apply:
+      steps:
+      - apply
+    
