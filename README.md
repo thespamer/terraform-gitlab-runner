@@ -54,7 +54,7 @@ None.
 
 See the GitLab docs [here](https://docs.gitlab.com/ee/ci/runners/#registering-a-specific-runner-with-a-project-registration-token).
 
-- Go to the project in GitLab e.g. https://git.worten.net/devops/terraform-gitlab-runner
+- Go to the project in GitLab e.g. https://git.tug4.net/devops/terraform-gitlab-runner
 - On the left hand side select Settings > CI/CD
 - Under Runners Expand.
 
@@ -108,7 +108,7 @@ module "runner" {
   gitlab_runner_concurrency = 10
 
   gitlab_runner_registration_config = {
-    url                = "https://git.worten.net"
+    url                = "https://git.tug4.net"
     name               = "test-runner"
     registration_token = var.registration_token
     docker_image       = "alpine:latest"
